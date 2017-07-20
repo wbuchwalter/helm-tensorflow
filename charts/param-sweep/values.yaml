@@ -1,0 +1,15 @@
+# Default values for param-sweep.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+image:
+  repository: wbuchwalter/tf-paint
+  tag: latest
+  pullPolicy: Always
+training:
+  LearningRateSweep:
+    - 0.001
+    - 0.01
+    - 0.05
+  hiddenLayersSweep:
+    - 5
+    - 6  

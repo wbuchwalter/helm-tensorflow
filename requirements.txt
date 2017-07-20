@@ -1,1 +1,2 @@
 scikit-image
+click>=6.2
