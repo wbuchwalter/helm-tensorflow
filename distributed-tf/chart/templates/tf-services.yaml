@@ -1,0 +1,20 @@
+{{- $relname := .Release.Name -}}
+---
+{{- range $type, $nb := .Values.clusterSpec }}
+{{ range $i, $e := until (int $nb) }}
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ $type }}-{{$i}}
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
+  selector:
+    job: {{ $type }}
+    task: t{{$i}}
+---
+{{ end }}
+{{- end }}
